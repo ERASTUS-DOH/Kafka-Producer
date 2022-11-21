@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: producer
+
+#Kafka
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: localhost
+      source: email
+      bindings:
+       email-out-0:
+          destination: email-out-0
+          content-type: application/json
+       sms-out-0:
+         destination: sms-out-0
+         content-type: application/json
+       notification-out-0:
+         destination: notification-out-0
+         content-type: application/json
+
+
+event:
+  publisher:
+    rate: 120000
+
+#Server
+server:
+  port: 9093
